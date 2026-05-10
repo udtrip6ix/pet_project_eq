@@ -219,3 +219,22 @@ __marimo__/
 
 #minio
 data/
+
+# MinIO
+data/
+
+# Airflow
+airflow/logs/
+airflow/plugins/
+airflow/dags/__pycache__/
+logs/
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Docker
+*.pid
+*.log
