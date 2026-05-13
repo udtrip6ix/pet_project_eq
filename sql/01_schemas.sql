@@ -1,0 +1,4 @@
+-- Создание основных схем хранилища
+CREATE SCHEMA IF NOT EXISTS stg;
+CREATE SCHEMA IF NOT EXISTS ods;
+CREATE SCHEMA IF NOT EXISTS dm;
