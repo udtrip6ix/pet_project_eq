@@ -37,3 +37,16 @@ dwh_db = postgres
 Подключение к DWH из DBeaver (локально):
 host = localhost
 port = 5433
+
+7. Настройка подключения дагов для витрины
+Airflow → Admin → Connections
+
+Создать новое подключение:
+
+Connection Id: postgres_dwh
+Connection Type: Postgres
+Host: postgres_dwh
+Database: postgres
+Login: postgres
+Password: postgres
+Port: 5432
