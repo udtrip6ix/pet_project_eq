@@ -28,7 +28,7 @@ args = {
     "start_date": pendulum.datetime(2026, 5, 10, tz="Europe/Moscow"),
     "catchup": True,
     "retries": 3,
-    "retry_delay": pendulum.duration(seconds=10),
+    "retry_delay": pendulum.duration(hours=1),
 }
 
 
