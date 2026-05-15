@@ -23,22 +23,10 @@ pass: minioadmin
 ACCESS_KEY: admin
 SECRET_KEY: admin123
 
-Добавить в Airflow → Admin → Variables:
+6. Добавить в Airflow → Admin → Variables:
 s3_access_key = admin
 s3_secret_key = admin123
 pg_password = postgres
-
-6. Настройка переменных DWH (Postgres)
-Добавить в Airflow → Admin → Variables:
-dwh_host = postgres_dwh
-dwh_port = 5432
-dwh_user = postgres
-dwh_password = postgres
-dwh_db = postgres
-
-Подключение к DWH из DBeaver (локально):
-host = localhost
-port = 5433
 
 7. Настройка подключения дагов для витрины
 Airflow → Admin → Connections
@@ -55,4 +43,10 @@ Login: postgres
 Password: postgres
 
 Extra: (оставить пустым)
+
+8.  Подключение к DWH из DBeaver (локально):
+host = localhost
+port = 5433
+
+
 
