@@ -50,12 +50,20 @@ with DAG(
         task_id="start",
     )
 
-    create_dm_tables = SQLExecuteQueryOperator(
-        task_id="create_dm_tables",
-        conn_id="postgres_dwh",
+    create_dm_tables_avg = SQLExecuteQueryOperator(
+        task_id="create_dm_tables_avg",
+        conn_id=PG_CONNECT,
         autocommit=True,
-        sql=Path("/opt/airflow/sql/dm/create_dm_tables.sql").read_text(),
-)
+        sql="""
+            CREATE SCHEMA IF NOT EXISTS dm;
+
+            CREATE TABLE IF NOT EXISTS dm.fct_avg_day_earthquake (
+                date date,
+                avg_magnitude float
+            );
+        """,
+    )
+
 
 
     sensor_on_raw_layer = ExternalTaskSensor(
