@@ -139,7 +139,7 @@ with DAG(
 
     (
             start >>
-            create_dm_tables >>
+            create_dm_tables_count >>
             sensor_on_raw_layer >>
             drop_stg_table_before >>
             create_stg_table >>
