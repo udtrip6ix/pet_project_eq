@@ -48,5 +48,21 @@ Extra: (оставить пустым)
 host = localhost
 port = 5433
 
+9. metabase
 
+name:foo
+second name:foo
+email:foo@example.com
+team name: foo
+pass:foofoo1
 
+name:dwh
+host:postgres_dwh
+port: 5432
+name db: postgres
+username: postgres
+pass: postgres
+
+Дашборды через создание своей модели: 
+    select * dm.fct_avg_day_earthquake
+    select * dm.fct_count_day_earthquake
