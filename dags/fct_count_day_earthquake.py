@@ -3,6 +3,7 @@ from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 from airflow.sensors.external_task import ExternalTaskSensor
+from pathlib import Path
 
 # Конфигурация DAG
 OWNER = "ud"
@@ -46,6 +47,12 @@ with DAG(
 
     start = EmptyOperator(
         task_id="start",
+    )
+
+    create_dm_tables = SQLExecuteQueryOperator(
+        task_id="create_dm_tables",
+        conn_id="postgres_dwh",
+        sql=Path("/opt/airflow/sql/dm/create_dm_tables.sql")
     )
 
     sensor_on_raw_layer = ExternalTaskSensor(
@@ -121,6 +128,7 @@ with DAG(
 
     (
             start >>
+            create_dm_tables >>
             sensor_on_raw_layer >>
             drop_stg_table_before >>
             create_stg_table >>
