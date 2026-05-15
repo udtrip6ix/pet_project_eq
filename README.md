@@ -18,13 +18,15 @@ docker compose down -v          (полная очистка с удаление
 
 5. Настройка S3 (MinIO)
 В MinIO нужно создать Access Key и Secret Key:
+login: minioadmin
+pass: minioadmin
 ACCESS_KEY: admin
 SECRET_KEY: admin123
 
 Добавить в Airflow → Admin → Variables:
 s3_access_key = admin
 s3_secret_key = admin123
-s3_endpoint   = http://minio:9000
+pg_password = postgres
 
 6. Настройка переменных DWH (Postgres)
 Добавить в Airflow → Admin → Variables:
@@ -45,8 +47,12 @@ Airflow → Admin → Connections
 
 Connection Id: postgres_dwh
 Connection Type: Postgres
+
 Host: postgres_dwh
+Port: 5432
 Database: postgres
 Login: postgres
 Password: postgres
-Port: 5432
+
+Extra: (оставить пустым)
+

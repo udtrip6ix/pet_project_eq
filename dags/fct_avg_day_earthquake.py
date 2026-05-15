@@ -5,6 +5,7 @@ from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 from airflow.sensors.external_task import ExternalTaskSensor
 from pathlib import Path
 
+
 # Конфигурация DAG
 OWNER = "ud"
 DAG_ID = "fct_avg_day_earthquake"
@@ -52,9 +53,10 @@ with DAG(
     create_dm_tables = SQLExecuteQueryOperator(
         task_id="create_dm_tables",
         conn_id="postgres_dwh",
-        sql=Path("/opt/airflow/sql/dm/create_dm_tables.sql")
+        autocommit=True,
+        sql=Path("/opt/airflow/sql/dm/create_dm_tables.sql").read_text(),
+)
 
-    )
 
     sensor_on_raw_layer = ExternalTaskSensor(
         task_id="sensor_on_raw_layer",
